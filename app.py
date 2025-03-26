@@ -128,13 +128,13 @@ def login():
         # No changes: use behavioral thresholds
         # Here we interpret error_score directly as the risk score
         total_risk_score = error_score
-        if total_risk_score < 0.101 or total_risk_score >= 0.5:
+        if total_risk_score < 0.101 or total_risk_score >= 0.18:
             risk_decision = "block"
             reason = "High-risk login detected (behavioral anomaly)"
-        elif 0.101 <= total_risk_score < 0.28:
+        elif 0.101 <= total_risk_score < 0.15:
             risk_decision = "allow"
             reason = "Normal login (behavioral anomaly within acceptable range)"
-        elif 0.28 <= total_risk_score < 0.5:
+        elif 0.15 <= total_risk_score < 0.18:
             risk_decision = "mfa"
             reason = "Moderate anomaly detected (behavioral anomaly)"
     else:
